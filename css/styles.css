@@ -38,8 +38,15 @@ h1 {
 
 .input-field {
   display: block;
+  height: 19px;
   width: 50vw;
   margin: 2.5% auto;
+  resize: none;
+  border: 1px solid #D1D3D4;
+}
+
+.input-field::placeholder {
+  color: #afb0b3;
 }
 
 #save-button {
@@ -55,10 +62,8 @@ h1 {
   background-color: #045E55;
 }
 
-
-
-section {
-  height: 55vh;
+#idea-list {
+  height: 47vh;
   width: 100vw;
   position: fixed;
   bottom: 0px;
@@ -69,22 +74,80 @@ section {
   align-items: center;
 }
 
+[name=search-field] {
+  width: 50vw;
+  position: fixed;
+  top: 44%;
+  left: 25%;
+  z-index: 1;
+}
+
 article {
   width: 50vw;
   position: relative;
+  border-bottom: 1px solid #D1D3D4;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 h2 {
   margin-top: 0;
-
-
+  color: #6D6E71;
 }
 
-.remove-button {
-  font-size: 1.5em;
-  border-radius: 50%;
-  background-color: grey;
+p {
+  color: #939598;
+}
+
+.button {
+  background-size: 2.25em 2.25em;
+  background-repeat: none;
+  border: none;
+  width: 2.25em;
+  height: 2.25em;
+  margin-right: 10px; 
+}
+
+.remove {
+  background-image: url('../img/delete.svg');
   position: absolute;
-  top: 0;
+  top: 6px;
   right: 0;
+  margin-right: 0px;
 }
+
+.remove:hover {
+  background-image: url('../img/delete-hover.svg');  
+}
+
+.quality-up {
+  background-image: url('../img/upvote.svg');
+}
+
+.quality-up:hover {
+  background-image: url('../img/upvote-hover.svg');
+}
+
+.quality-down {
+  background-image: url('../img/downvote.svg');
+}
+
+.quality-down:hover {
+  background-image: url('../img/downvote-hover.svg');
+}
+
+h3 {
+  display: inline-block;
+  margin: 0px auto 10px 10px;
+  vertical-align: super;
+  color: #6D6E71;
+}
+/*
+hr {
+  color: #D1D3D4;
+}
+
+*/
+
+
+
