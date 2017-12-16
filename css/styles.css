@@ -1,0 +1,90 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  position: relative;
+}
+
+header {
+  background-color: #E5F3F2;
+  width: 100vw;
+  height: 45vh;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  display: block;
+  margin: 2% 2%;
+
+}
+
+#idea-header {
+  color: #00A79D;
+}
+
+#box-header {
+  color: #6D6E71;
+}
+
+.input-field {
+  display: block;
+  width: 50vw;
+  margin: 2.5% auto;
+}
+
+#save-button {
+  height: 20px;
+  width: 50vw;
+  background-color: #00A79D;
+  color: #FFFFFF;
+  border: none;
+
+}
+
+#save-button:hover {
+  background-color: #045E55;
+}
+
+
+
+section {
+  height: 55vh;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  overflow: scroll;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article {
+  width: 50vw;
+  position: relative;
+}
+
+h2 {
+  margin-top: 0;
+
+
+}
+
+.remove-button {
+  font-size: 1.5em;
+  border-radius: 50%;
+  background-color: grey;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <title>IdeaBox</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:700" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
   <header>
-    <h1><span id="idea-header">idea</span><span id="box-header">box</span>span></h1>
+    <h1><span id="idea-header">idea</span><span id="box-header">box</span></h1>
     <form>
       <label for="idea-title">
         <input type="text" class="input-field" name="idea-title" placeholder="Title" required>
@@ -39,9 +40,24 @@
       <h3>quality</h3>
       <hr>
     </article>
+    <article>
+      <h2>Example Idea 1</h2>
+      <label for="remove-button">
+        <button class="remove-button">X</button>
+      </label>
+      <p>Example text about our idea number 1. is this enough text to wrap around a little bit?</p>
+      <label for="quality-up-button">
+        <button class="quality-up-button" name="quality-up-button">Up</button>
+      </label>
+      <label for="quality-down-button">
+        <button class="quality-down-button" name="quality-down-button">Down</button>
+      </label>
+      <h3>quality</h3>
+      <hr>
+    </article>
   </section>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/Users/charles/turing/ideabox/jquery.min.js"><\/script>')</script>
-  <script type="text/js" src="scripts.js"></script>
+  <script>window.jQuery || document.write('<script src="/Users/charles/turing/ideabox/js/jquery.min.js"><\/script>')</script>
+  <script type="text/js" src="js/scripts.js"></script>
 </body>
 </html>
