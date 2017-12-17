@@ -30,6 +30,8 @@ Idea.prototype.prependIdea = function() {
 $('#save-button').click(function(event) {
   var idea = new Idea (Date.now(), $ideaTitle.val(), $ideaDescription.val());
   
+  console.log(idea.id)
+
   if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
     return false;
   } else {
@@ -38,8 +40,19 @@ $('#save-button').click(function(event) {
     $ideaTitle.val('');
     $ideaDescription.val('');
     $ideaTitle.focus();
+    storeIdea(idea.id, idea.title, idea.description, idea.quality);
+    // var stringifiedObject = JSON.stringify(idea);
+    // localStorage.setItem(idea.id , stringifiedObject);
+    // console.log(idea.id);
+
   }
 });
+
+function storeIdea(id, title, body, quality) {
+  var objectToStore = new Idea (id, title, body, quality);
+  var stringifiedObject = JSON.stringify(objectToStore);
+  localStorage.setItem(id , stringifiedObject);
+}
 
 
 $('#idea-list').on('click', '.remove', function(e) {
@@ -63,44 +76,4 @@ $(this).closest('label').siblings('h3').text('quality: plausible');
  $(this).closest('label').siblings('h3').text('quality: swill');
 } 
 });
-
-
-
-
-
-
-
-
-// $('#save-button').click(function(event) {
-
-//   var $ideaTitle = $('[name=idea-title]');
-//   var $ideaDescription = $('[name=idea-description');
-
-//   var idea = 
-//     `<article>
-//       <h2>${$ideaTitle.val()}</h2>
-//       <label for="remove-button">
-//         <button class="remove button"></button>
-//       </label>
-//       <p>${$ideaDescription.val()}</p>
-//       <label for="quality-up-button">
-//         <button class="quality-up button" name="quality-up-button"></button>
-//       </label>
-//       <label for="quality-down-button">
-//         <button class="quality-down button" name="quality-down-button"></button>
-//       </label>
-//       <h3>quality: swill</h3>
-//     </article>`
-
-//   if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
-//     return false;
-//   } else {
-//     event.preventDefault();
-//     $('#idea-list').prepend(idea);
-//     $ideaTitle.val('');
-//     $ideaDescription.val('');
-//     $ideaTitle.focus();
-//   }
-
-// });
 
