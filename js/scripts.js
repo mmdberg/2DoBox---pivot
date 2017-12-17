@@ -1,11 +1,11 @@
 
 $('#save-button').click(function(event) {
-  event.preventDefault();
 
   var $ideaTitle = $('[name=idea-title]');
   var $ideaDescription = $('[name=idea-description');
 
-  var idea = `<article>
+  var idea = 
+    `<article>
       <h2>${$ideaTitle.val()}</h2>
       <label for="remove-button">
         <button class="remove button"></button>
@@ -20,5 +20,25 @@ $('#save-button').click(function(event) {
       <h3>quality: swill</h3>
     </article>`
 
-  $('#idea-list').prepend(idea);  
-})
+  if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
+    return false;
+  } else {
+    event.preventDefault();
+    $('#idea-list').prepend(idea);
+    $ideaTitle.val('');
+    $ideaDescription.val('');
+    $ideaTitle.focus();
+  }
+
+});
+
+$('#idea-list').on('click', '.remove', function(e) {
+ $(this).closest('article').fadeOut(function() {
+   $(this).remove();
+ })
+});
+
+
+
+
+
