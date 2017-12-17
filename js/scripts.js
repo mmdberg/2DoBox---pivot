@@ -38,7 +38,21 @@ $('#idea-list').on('click', '.remove', function(e) {
  })
 });
 
+$('#idea-list').on('click', '.quality-up', function(e) {
+if ($(this).closest('label').siblings('h3').text() === ('quality: swill')) {
+$(this).closest('label').siblings('h3').text('quality: plausible');
+} else if ($(this).closest('label').siblings('h3').text() === ('quality: plausible')) {
+ $(this).closest('label').siblings('h3').text('quality: genius');
+} 
+});
 
+$('#idea-list').on('click', '.quality-down', function(e) {
+if ($(this).closest('label').siblings('h3').text() === ('quality: genius')) {
+$(this).closest('label').siblings('h3').text('quality: plausible');
+} else if ($(this).closest('label').siblings('h3').text() === ('quality: plausible')) {
+ $(this).closest('label').siblings('h3').text('quality: swill');
+} 
+});
 
 
 
