@@ -1,12 +1,18 @@
 var $ideaTitle = $('[name=idea-title]');
 var $ideaDescription = $('[name=idea-description');
 
-function Idea (id, title, body) {
-  this.id = id;
-  this.title = title;
-  this.body = body;
-  this.quality = 'quality: swill';
-}
+$('#save-button').click(function(event) {
+  var idea = new Idea (Date.now(), $ideaTitle.val(), $ideaDescription.val());
+
+  if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
+    return false;
+  } else {
+   event.preventDefault();
+   prependIdea(idea);
+   toLocalStorage(idea);
+   inputReset();
+ }
+});
 
 function prependIdea (idea) {
   $('#idea-list').prepend(
@@ -27,26 +33,23 @@ function prependIdea (idea) {
     );
 };
 
-$('#save-button').click(function(event) {
-  var idea = new Idea (Date.now(), $ideaTitle.val(), $ideaDescription.val());
+function Idea (id, title, body) {
+  this.id = id;
+  this.title = title;
+  this.body = body;
+  this.quality = 'quality: swill';
+}
 
-  if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
-    return false;
-  } else {
-   event.preventDefault();
-   prependIdea(idea);
-   toLocalStorage(idea);
-   $ideaTitle.val('');
-   $ideaDescription.val('');
-   $ideaTitle.focus();
- }
-});
+function inputReset() {
+  $ideaTitle.val('');
+  $ideaDescription.val('');
+  $ideaTitle.focus();
+}
 
 function toLocalStorage(idea) {
  var stringifiedIdea = JSON.stringify(idea);
  localStorage.setItem(idea.id, stringifiedIdea);
 }
-
 
 function pageLoad() {
  for (var i = 0; i < localStorage.length; i++) {
