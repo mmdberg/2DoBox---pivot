@@ -14,25 +14,6 @@ $('#save-button').click(function(event) {
  }
 });
 
-function prependIdea (idea) {
-  $('#idea-list').prepend(
-    `<article>
-    <h2>${idea.title}</h2>
-    <label for="remove-button">
-    <button class="remove button"></button>
-    </label>
-    <p>${idea.body}</p>
-    <label for="quality-up-button">
-    <button class="quality-up button" name="quality-up-button"></button>
-    </label>
-    <label for="quality-down-button">
-    <button class="quality-down button" name="quality-down-button"></button>
-    </label>
-    <h3>${idea.quality}</h3>
-    </article>`
-    );
-};
-
 function Idea (id, title, body) {
   this.id = id;
   this.title = title;
@@ -40,7 +21,6 @@ function Idea (id, title, body) {
   this.quality = 'quality: swill';
 }
 
-<<<<<<< HEAD
 function prependIdea(idea) {
   $('#idea-list').prepend(
     `<article id="${idea.id}">
@@ -60,39 +40,6 @@ function prependIdea(idea) {
   );
 };
 
-$('#save-button').click(function(event) {
-  var idea = new Idea (Date.now(), $ideaTitle.val(), $ideaDescription.val());
-  
-  if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == ""){
-    return false;
-  } else {
-    event.preventDefault();
-    prependIdea(idea);
-    toLocalStorage(idea);
-    $ideaTitle.val('');
-    $ideaDescription.val('');
-    $ideaTitle.focus();
-  }
-});
-
-function toLocalStorage(idea) {
-  var stringifiedIdea = JSON.stringify(idea);
-  localStorage.setItem(idea.id, stringifiedIdea);
-}
-
-function pageLoad() {
-  for (var i = 0; i < localStorage.length; i++) {
-    var returnIdea = localStorage.getItem(localStorage.key(i));
-    var parseIdea = JSON.parse(returnIdea);
-    prependIdea(parseIdea)
-    console.log(parseIdea);
-  }
-}
-window.onload = function() {
-  pageLoad();
-}
-
-=======
 function inputReset() {
   $ideaTitle.val('');
   $ideaDescription.val('');
@@ -116,7 +63,6 @@ function pageLoad() {
 window.onload = function() {
  pageLoad();
 }
->>>>>>> 16aa12a06f44b4e0aee597406968221e8db11649
 
 $('#idea-list').on('click', '.remove', function(e) {
  $(this).closest('article').fadeOut(function() {
