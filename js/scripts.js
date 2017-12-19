@@ -8,21 +8,21 @@ function Idea (id, title, body) {
   this.quality = 'quality: swill';
 }
 
-Idea.prototype.prependIdea = function() {
+function prependIdea(idea) {
   $('#idea-list').prepend(
-    `<article>
-      <h2>${this.title}</h2>
+    `<article id="${idea.id}">
+      <h2>${idea.title}</h2>
       <label for="remove-button">
         <button class="remove button"></button>
       </label>
-      <p>${this.body}</p>
+      <p>${idea.body}</p>
       <label for="quality-up-button">
         <button class="quality-up button" name="quality-up-button"></button>
       </label>
       <label for="quality-down-button">
         <button class="quality-down button" name="quality-down-button"></button>
       </label>
-      <h3>${this.quality}</h3>
+      <h3>${idea.quality}</h3>
     </article>`
   );
 };
@@ -34,12 +34,30 @@ $('#save-button').click(function(event) {
     return false;
   } else {
     event.preventDefault();
-    idea.prependIdea();
+    prependIdea(idea);
+    toLocalStorage(idea);
     $ideaTitle.val('');
     $ideaDescription.val('');
     $ideaTitle.focus();
   }
 });
+
+function toLocalStorage(idea) {
+  var stringifiedIdea = JSON.stringify(idea);
+  localStorage.setItem(idea.id, stringifiedIdea);
+}
+
+function pageLoad() {
+  for (var i = 0; i < localStorage.length; i++) {
+    var returnIdea = localStorage.getItem(localStorage.key(i));
+    var parseIdea = JSON.parse(returnIdea);
+    prependIdea(parseIdea)
+    console.log(parseIdea);
+  }
+}
+window.onload = function() {
+  pageLoad();
+}
 
 
 $('#idea-list').on('click', '.remove', function(e) {
