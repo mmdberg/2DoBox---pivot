@@ -10,22 +10,21 @@ body {
 }
 
 header {
+  align-items: center;
   background-color: #E5F3F2;
-  width: 100vw;
-  height: 45vh;
-  position: fixed;
-  top: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-family: 'Roboto Slab', serif;
+  height: 45vh;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
 }
 
 h1 {
   display: block;
   margin: 2% 2%;
-
 }
 
 #idea-header {
@@ -37,12 +36,12 @@ h1 {
 }
 
 .input-field {
+  border: 1px solid #D1D3D4;
   display: block;
   height: 19px;
-  width: 50vw;
   margin: 2.5% auto;
   resize: none;
-  border: 1px solid #D1D3D4;
+  width: 50vw;
 }
 
 .input-field::placeholder {
@@ -50,12 +49,11 @@ h1 {
 }
 
 #save-button {
+  background-color: #00A79D;
+  border: none;
+  color: #FFFFFF;
   height: 20px;
   width: 50vw;
-  background-color: #00A79D;
-  color: #FFFFFF;
-  border: none;
-
 }
 
 #save-button:hover {
@@ -63,36 +61,36 @@ h1 {
 }
 
 #idea-list {
-  height: 47vh;
-  width: 100vw;
-  position: fixed;
+  align-items: center;
   bottom: 0px;
-  overflow: scroll;
-  font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  height: 47vh;
+  overflow: scroll;
+  position: fixed;
+  width: 100vw;
 }
 
 [name=search-field] {
-  width: 50vw;
+  left: 25%;
   position: fixed;
   top: 44%;
-  left: 25%;
+  width: 50vw;
   z-index: 1;
 }
 
 article {
-  width: 50vw;
-  position: relative;
   border-bottom: 1px solid #D1D3D4;
-  padding-bottom: 15px;
   margin-bottom: 10px;
+  padding-bottom: 15px;
+  position: relative;
+  width: 50vw;
 }
 
 h2 {
-  margin-top: 0;
   color: #6D6E71;
+  margin-top: 0;
 }
 
 p {
@@ -100,20 +98,20 @@ p {
 }
 
 .button {
-  background-size: 2.25em 2.25em;
   background-repeat: none;
+  background-size: 2.25em 2.25em;
   border: none;
-  width: 2.25em;
   height: 2.25em;
   margin-right: 10px; 
+  width: 2.25em;
 }
 
 .remove {
   background-image: url('../img/delete.svg');
-  position: absolute;
-  top: 6px;
-  right: 0;
   margin-right: 0px;
+  position: absolute;
+  right: 0;
+  top: 6px;
 }
 
 .remove:hover {
@@ -137,17 +135,11 @@ p {
 }
 
 h3 {
+  color: #6D6E71;
   display: inline-block;
   margin: 0px auto 10px 10px;
   vertical-align: super;
-  color: #6D6E71;
 }
-/*
-hr {
-  color: #D1D3D4;
-}
-
-*/
 
 
 
