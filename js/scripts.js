@@ -44,12 +44,12 @@ function inputReset() {
   $ideaTitle.val('');
   $ideaDescription.val('');
   $ideaTitle.focus();
-}
+};
 
 function toLocalStorage(idea) {
  var stringifiedIdea = JSON.stringify(idea);
  localStorage.setItem(idea.id, stringifiedIdea);
-}
+};
 
 function pageLoad() {
  for (var i = 0; i < localStorage.length; i++) {
@@ -57,17 +57,19 @@ function pageLoad() {
    var parseIdea = JSON.parse(returnIdea);
    prependIdea(parseIdea)
    console.log(parseIdea);
- }
-}
+ };
+};
 
 window.onload = function() {
  pageLoad();
-}
+};
+
 
 $('#idea-list').on('click', '.remove', function(e) {
  $(this).closest('article').fadeOut(function() {
    $(this).remove();
  })
+ localStorage.removeItem($(this).closest('article').attr('id'));
 });
 
 $('#idea-list').on('click', '.quality-up', function(e) {
