@@ -63,14 +63,18 @@ window.onload = function() {
  pageLoad();
 };
 
-$('#idea-list').on('click', '.remove', function(e) {
+$('#idea-list').on('click', 'h2', function() {
+
+
+
+$('#idea-list').on('click', '.remove', function() {
  $(this).closest('article').fadeOut(function() {
    $(this).remove();
  })
  localStorage.removeItem($(this).closest('article').attr('id'));
 });
 
-$('#idea-list').on('click', '.quality-up', function(e) {
+$('#idea-list').on('click', '.quality-up', function() {
   
    var key = $(this).closest('article').attr('id')
    var retrievedIdea = localStorage.getItem(key);
@@ -92,11 +96,27 @@ $('#idea-list').on('click', '.quality-up', function(e) {
  } 
 });
 
-$('#idea-list').on('click', '.quality-down', function(e) {
-  if ($(this).closest('label').siblings('h3').text() === ('quality: genius')) {
+$('#idea-list').on('click', '.quality-down', function() {
+    var key = $(this).closest('article').attr('id')
+    var retrievedIdea = localStorage.getItem(key);
+    var parsedIdea = JSON.parse(retrievedIdea);
+
+
+  if (parsedIdea['quality'] === ('quality: genius')) {
     $(this).closest('label').siblings('h3').text('quality: plausible');
-  } else if ($(this).closest('label').siblings('h3').text() === ('quality: plausible')) {
+    parsedIdea['quality'] = 'quality: plausible';
+
+    var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
+
+
+  } else if (parsedIdea['quality'] === ('quality: plausible')) {
    $(this).closest('label').siblings('h3').text('quality: swill');
+   parsedIdea['quality'] = 'quality: swill'
+
+
+   var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
  } 
 });
 
