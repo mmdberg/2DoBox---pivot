@@ -48,22 +48,20 @@ function inputReset() {
 
 function toLocalStorage(idea) {
  var stringifiedIdea = JSON.stringify(idea);
- localStorage.setItem(idea.id, stringifiedIdea);
+ localStorage.setItem(idea.id, JSON.stringify(idea));
 };
 
 function pageLoad() {
  for (var i = 0; i < localStorage.length; i++) {
    var returnIdea = localStorage.getItem(localStorage.key(i));
    var parseIdea = JSON.parse(returnIdea);
-   prependIdea(parseIdea)
-   console.log(parseIdea);
+   prependIdea(parseIdea);
  };
 };
 
 window.onload = function() {
  pageLoad();
 };
-
 
 $('#idea-list').on('click', '.remove', function(e) {
  $(this).closest('article').fadeOut(function() {
@@ -73,10 +71,24 @@ $('#idea-list').on('click', '.remove', function(e) {
 });
 
 $('#idea-list').on('click', '.quality-up', function(e) {
-  if ($(this).closest('label').siblings('h3').text() === ('quality: swill')) {
+  
+   var key = $(this).closest('article').attr('id')
+   var retrievedIdea = localStorage.getItem(key);
+   var parsedIdea = JSON.parse(retrievedIdea);
+
+  if (parsedIdea['quality'] === ('quality: swill')) {
     $(this).closest('label').siblings('h3').text('quality: plausible');
-  } else if ($(this).closest('label').siblings('h3').text() === ('quality: plausible')) {
-   $(this).closest('label').siblings('h3').text('quality: genius');
+    parsedIdea['quality'] = 'quality: plausible';
+
+    var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
+
+  } else if (parsedIdea['quality'] === ('quality: plausible')) {
+    $(this).closest('label').siblings('h3').text('quality: genius');
+    parsedIdea['quality'] = 'quality: genius';
+
+    var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
  } 
 });
 
