@@ -40,6 +40,17 @@ function prependIdea(idea) {
   );
 };
 
+$('[name=search-field]').on('keyup', function() {
+  console.log('key up pressed');
+  var searchRequest = $('[name=search-field]').val();
+  console.log(searchRequest);
+  $('article').each(function(){
+    var searchResult = $(this).text().indexOf(searchRequest);
+    console.log(searchResult);
+    this.style.display = searchResult > -1 ? "" : "none";
+  })
+})
+
 function inputReset() {
   $ideaTitle.val('');
   $ideaDescription.val('');
@@ -63,8 +74,38 @@ window.onload = function() {
  pageLoad();
 };
 
-// $('#idea-list').on('click', 'h2', function() {
+function retrieveAndParse() {
+  var key = $(this).closest('article').attr('id')
+  var retrievedIdea = localStorage.getItem(key);
+  var parsedIdea = JSON.parse(retrievedIdea);
+}
 
+$()
+
+$('#idea-list').on('click', 'h2', function() {
+  $(this).prop('contenteditable', true).focus();
+  $(this).focusout( function() {
+    var key = $(this).closest('article').attr('id')
+    var retrievedIdea = localStorage.getItem(key);
+    var parsedIdea = JSON.parse(retrievedIdea);
+    parsedIdea['title'] = $(this).html();
+    var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
+    })
+  });
+
+
+$('#idea-list').on('click', 'p', function() {
+  $(this).prop('contenteditable', true).focus();
+  $(this).focusout( function() {
+    var key = $(this).closest('article').attr('id')
+    var retrievedIdea = localStorage.getItem(key);
+    var parsedIdea = JSON.parse(retrievedIdea);
+    parsedIdea['body'] = $(this).html();
+    var stringifiedObject = JSON.stringify(parsedIdea);
+    localStorage.setItem(key, stringifiedObject);
+    })
+  });
 
 
 $('#idea-list').on('click', '.remove', function() {
@@ -76,9 +117,9 @@ $('#idea-list').on('click', '.remove', function() {
 
 $('#idea-list').on('click', '.quality-up', function() {
   
-   var key = $(this).closest('article').attr('id')
-   var retrievedIdea = localStorage.getItem(key);
-   var parsedIdea = JSON.parse(retrievedIdea);
+     var key = $(this).closest('article').attr('id')
+     var retrievedIdea = localStorage.getItem(key);
+     var parsedIdea = JSON.parse(retrievedIdea);
 
   if (parsedIdea['quality'] === ('quality: swill')) {
     $(this).closest('label').siblings('h3').text('quality: plausible');
