@@ -272,6 +272,7 @@ h3 {
   #idea-list {
     width: 100%;
     top: 39%;
+    height: 60vh;
   }
 
   article {
