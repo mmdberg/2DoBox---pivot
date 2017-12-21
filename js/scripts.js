@@ -41,12 +41,9 @@ function prependIdea(idea) {
 };
 
 $('[name=search-field]').on('keyup', function() {
-  console.log('key up pressed');
   var searchRequest = $('[name=search-field]').val();
-  console.log(searchRequest);
   $('article').each(function(){
     var searchResult = $(this).text().indexOf(searchRequest);
-    console.log(searchResult);
     this.style.display = searchResult > -1 ? "" : "none";
   })
 })
