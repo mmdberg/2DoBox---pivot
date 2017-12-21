@@ -29,10 +29,10 @@ function prependIdea(idea) {
         <button class="remove button"></button>
       </label>
       <p>${idea.body}</p>
-      <label for="quality-up-button">
+      <label for="quality-up-button" class="upL">
         <button class="quality-up button" name="quality-up-button"></button>
       </label>
-      <label for="quality-down-button">
+      <label for="quality-down-button" class="downL">
         <button class="quality-down button" name="quality-down-button"></button>
       </label>
       <h3>${idea.quality}</h3>
@@ -63,7 +63,7 @@ window.onload = function() {
  pageLoad();
 };
 
-$('#idea-list').on('click', 'h2', function() {
+// $('#idea-list').on('click', 'h2', function() {
 
 
 

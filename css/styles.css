@@ -25,6 +25,7 @@ header {
 h1 {
   display: block;
   margin: 2% 2%;
+  /*margin-top: -5%*/
 }
 
 #idea-header {
@@ -51,6 +52,7 @@ h1 {
 #save-button {
   background-color: #00A79D;
   border: none;
+  border-radius: 0px;
   color: #FFFFFF;
   height: 20px;
   width: 50vw;
@@ -140,6 +142,175 @@ h3 {
   margin: 0px auto 10px 10px;
   vertical-align: super;
 }
+
+@media screen and (max-width: 770px) {
+  header {
+    height: 41vh;
+  }
+  form {
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 25px;
+    margin-top: -1.5%;
+  }
+
+  label {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: -2px;
+  }
+
+  .input-field {
+    width: 70%
+  }
+
+  
+
+  #save-button {
+    width: 70%;
+    margin-top: 5px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  [name=search-field] {
+    width: 70%;
+    top: 41%;
+    left: 15%;
+  }
+
+  #idea-list {
+    width: 100%;
+    top: 52%;
+    height: 50vh;
+  }
+
+  article {
+    width: 70vw;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    margin-top: -2%;
+    font-size: 15px;
+  }
+
+  .button {
+    background-size: 1.5em 1.5em;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  .upL {
+    width: 12px;
+    display: inline-block;
+  }
+
+  .downL {
+    width: 12px;
+    display: inline-block;
+    margin-left: 14px;
+  }
+
+  h3 {
+    font-size: 15px;
+    text-align: center;
+    vertical-align: initial;
+  }
+
+  @media screen and (max-width: 360px) {
+  header {
+    height: 33vh;
+    margin: -5% auto;
+  }
+  form {
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-top: 0%;
+  }
+
+  label {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-field {
+    width: 90%
+  }
+
+  [name=idea-description] {
+    height: 40px;
+  }
+
+  #save-button {
+    width: 90%;
+    margin-top: 5px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  [name=search-field] {
+    width: 90%;
+    top: 32%;
+    left: 5%;
+  }
+
+  #idea-list {
+    width: 100%;
+    top: 39%;
+  }
+
+  article {
+    width: 90vw;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  p {
+    margin-top: -2%;
+    font-size: 10px;
+  }
+
+  .button {
+    background-size: 1.5em 1.5em;
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+  h3 {
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .upL {
+    width: 10px;
+    display: inline-block;
+  }
+
+  .downL {
+    width: 10px;
+    display: inline-block;
+    margin-left: 14px;
+  }
+}
+
 
 
 
