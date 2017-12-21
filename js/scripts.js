@@ -71,14 +71,6 @@ window.onload = function() {
  pageLoad();
 };
 
-function retrieveAndParse() {
-  var key = $(this).closest('article').attr('id')
-  var retrievedIdea = localStorage.getItem(key);
-  var parsedIdea = JSON.parse(retrievedIdea);
-}
-
-$()
-
 $('#idea-list').on('click', 'h2', function() {
   $(this).prop('contenteditable', true).focus();
   $(this).focusout( function() {
