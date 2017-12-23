@@ -156,7 +156,7 @@ h3 {
     margin-top: 2%;
   }
 
-  label {
+  .label {
     display: flex;
     justify-content: center;
     margin-top: -2px;
@@ -240,7 +240,7 @@ h3 {
     margin-top: 1%;
   }
 
-  label {
+  .label {
     display: flex;
     justify-content: center;
     width: 100vw;
