@@ -1,4 +1,4 @@
-pageLoad();
+// pageLoad();
 
 $('#save-button').on('click', makeIdea);
 $('.search-field').on('keyup', search);
@@ -32,10 +32,10 @@ function prependIdea(idea) {
   $('#idea-list').prepend(
     `<article id="${idea.id}">
       <h2>${idea.title}</h2>
-      <button class="remove button label"></button>
+      <button class="remove button"></button>
       <p class="idea-body">${idea.body}</p>
-      <button class="quality-up button label" name="quality-up-button"></button>
-      <button class="quality-down button label" name="quality-down-button"></button>
+      <button class="quality-up button"></button>
+      <button class="quality-down button"></button>
       <p class="quality">${idea.quality}</p>
     </article>`
   );
@@ -60,13 +60,13 @@ function toLocalStorage(idea) {
 };
 
 ////////Fix key argument
-function pageLoad() {
-  var returnIdea = localStorage.getItem(localStorage.key(id));
-  var parseIdea = JSON.parse(returnIdea);
-  parseIdea.forEach(function(val, i){
-    prependIdea(val);
-  })
-};
+// function pageLoad() {
+//   var returnIdea = localStorage.getItem(localStorage.key(id));
+//   var parseIdea = JSON.parse(returnIdea);
+//   parseIdea.forEach(function(val, i){
+//     prependIdea(val);
+//   })
+// };
 
 function editContent () {
   $(this).prop('contenteditable', true).focus();
