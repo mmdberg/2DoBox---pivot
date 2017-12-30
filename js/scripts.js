@@ -72,7 +72,6 @@ function toLocalStorage(idea) {
 };
 
 function editContentTitle() {
-  // editContent(title);
   $(this).focusout(function () {
     var key = $(this).closest('article').attr('id');
     var retrievedIdea = localStorage.getItem(key);
@@ -84,7 +83,6 @@ function editContentTitle() {
 };
 
 function editContentBody() {
-  // editContent(body);
   $(this).focusout(function () {
     var key = $(this).closest('article').attr('id');
     var retrievedIdea = localStorage.getItem(key);
