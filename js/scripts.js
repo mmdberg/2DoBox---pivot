@@ -1,4 +1,6 @@
-$('.save-button').click(makeIdea);
+$('.save-button').on('click', makeIdea);
+$('.idea-title').on('keyup', buttonDisable)
+$('.idea-description').on('keyup', buttonDisable)
 $('.search-field').on('keyup', search);
 $('#idea-list').on('click', 'h2', editContentTitle);
 $('#idea-list').on('click', 'p', editContentBody);
@@ -7,6 +9,7 @@ $('#idea-list').on('click', '.quality-up', upVote);
 $('#idea-list').on('click', '.quality-down', downVote);
 
 $(document).ready(pageLoad);
+$('.save-button').prop('disabled', true)
 
 function pageLoad() {
   Object.keys(localStorage).forEach(function (value) {
@@ -14,19 +17,26 @@ function pageLoad() {
   });
 };
 
+function buttonDisable() {
+  if ($(this).val() == '') {
+    $('.save-button').prop('disabled', true)
+  } else {
+    $('.save-button').prop('disabled', false)
+  }
+}
+
 function makeIdea(event) {
   var $ideaTitle = $('.idea-title');
   var $ideaDescription = $('.idea-description');
   var idea = new Idea(Date.now(), $ideaTitle.val(), $ideaDescription.val(), 'Swill');
-
   if (`${$ideaTitle.val()}` == "" || `${$ideaDescription.val()}` == "") {
     return false;
   } else {
-
     event.preventDefault();
     prependIdea(idea);
     toLocalStorage(idea);
     inputReset();
+    $('.save-button').prop('disabled', true);
   }
 };
 
@@ -46,7 +56,7 @@ function prependIdea(idea) {
       <p class="idea-body" contenteditable="true">${idea.body}</p>
       <button class="quality-up arrow button"></button>
       <button class="quality-down arrow button"></button>
-      <p class="quality">${idea.quality}</p>
+      <p class="quality">quality: ${idea.quality}</p>
     </article>`
   );
 };
@@ -106,7 +116,6 @@ function upVote() {
   var article = $(this).closest("article");
   var ideaID = $(this).closest('article').attr("id");
   var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
-
   if (parsedIdea.count < 2) {
     parsedIdea.count++;
     parsedIdea.quality = arrayQuality[parsedIdea.count];
@@ -119,7 +128,6 @@ function downVote() {
   var article = $(this).closest("article");
   var ideaID = $(this).closest('article').attr("id");
   var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
-
   if (parsedIdea.count > 0) {
     parsedIdea.count--;
     parsedIdea.quality = arrayQuality[parsedIdea.count];
