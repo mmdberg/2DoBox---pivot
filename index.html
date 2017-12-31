@@ -8,25 +8,17 @@
 </head>
 <body>
   <header>
-    <h1>idea<span id="box-header">box</span></h1>
+    <h1>TO<span id="box-header">DO</span></h1>
     <form>
       <input type="text" class="input-field idea-title" placeholder="Title" required>
-      <textarea type="text" class="input-field idea-description" placeholder="Body" required></textarea>
+      <textarea type="text" class="input-field idea-description" placeholder="Task" required></textarea>
       <button class="input-field save-button">save</button>
     </form>
   </header>
   <section class="bottom">
-    <input type="text" class="input-field search-field" placeholder="Search">
+    <input type="text" class="input-field search-field" placeholder="Filter">
   </section>
   <section id="idea-list">
-    <article id="${idea.id}">
-      <h2>idea.title</h2>
-      <button class="remove button"></button>
-      <p class="idea-body">idea.body</p>
-      <button class="quality-up arrow button"></button>
-      <button class="quality-down arrow button"></button>
-      <p class="quality">idea.quality</p>
-    </article>
   </section>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/Users/charles/turing/ideabox/js/jquery.min.js"><\/script>')</script>

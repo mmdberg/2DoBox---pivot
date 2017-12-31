@@ -56,6 +56,10 @@ h1 {
   background-color: #045E55;
 }
 
+.save-button:disabled {
+  background-color: #D1D3D4;
+}
+
 .search-field {
   left: 25%;
   position: fixed;
