@@ -1,4 +1,4 @@
-  *,
+*,
 *:before,
 *:after {
   box-sizing: border-box;
@@ -100,7 +100,7 @@ p {
   background-size: 2.25em;
   border: none;
   height: 2.25em;
-  margin-right: 10px;
+  margin-right: 10px; 
   width: 2.25em;
 }
 
@@ -140,92 +140,117 @@ p {
 }
 
 @media screen and (max-width: 770px) {
+
   header {
     height: 40vh;
   }
+
   form {
     width: 100vw;
   }
+
   h1 {
     font-size: 25px;
     margin-top: 2%;
   }
+
   .input-field {
     width: 70%
   }
+
   .search-field {
     left: 15%;
     top: 41%;
   }
+
   #idea-list {
     height: 50vh;
     top: 48%;
     width: 100%;
   }
+
   article {
     width: 70vw;
   }
+
   h2 {
     font-size: 20px;
   }
+
   p {
     margin-top: -2%;
     font-size: 15px;
   }
+
   .button {
     background-size: 1.5em;
     height: 1.5em;
     width: 1.5em;
   }
-  .quality {
+
+  .vote-label {
     font-size: 13px;
     vertical-align: initial;
   }
+
   .arrow {
     display: inline-block;
     width: 16px;
   }
+
   @media screen and (max-width: 360px) {
-    header {
-      height: 33vh;
-      margin: -5% auto;
-    }
-    h1 {
-      font-size: 20px;
-      margin-top: 1%;
-    }
-    .input-field {
-      width: 90%
-    }
-    .idea-description {
-      height: 52px;
-    }
-    .save-button {
-      margin-top: 5px;
-      width: 90%;
-    }
-    .search-field {
-      left: 5%;
-      top: 32%;
-      width: 90%;
-    }
-    #idea-list {
-      height: 60vh;
-      top: 39%;
-    }
-    article {
-      width: 90vw;
-    }
-    h2 {
-      font-size: 15px;
-    }
-    p {
-      font-size: 10px;
-      margin-top: -2%;
-    }
-    .quality {
-      font-size: 10px;
-      vertical-align: middle;
-      margin-top: 4px;
-    }
+
+  header {
+    height: 33vh;
+    margin: -5% auto;
   }
+
+  h1 {
+    font-size: 20px;
+    margin-top: 1%;
+  }
+
+  .input-field {
+    width: 90%
+  }
+
+  .idea-description {
+    height: 52px;
+  }
+
+  .save-button {
+    margin-top: 5px;
+    width: 90%;
+  }
+
+  .search-field {
+    left: 5%;
+    top: 32%;
+    width: 90%;
+  }
+
+  #idea-list {
+    height: 60vh;
+    top: 39%;
+  }
+
+  article {
+    width: 90vw;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  p {
+    font-size: 10px;
+    margin-top: -2%;
+  }
+
+  .vote-label {
+    font-size: 10px;
+    vertical-align: middle;
+    margin-top: 4px;
+  }
+
+}
