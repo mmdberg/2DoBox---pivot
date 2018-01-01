@@ -2,6 +2,11 @@ $('.save-button').on('click', makeIdea);
 $('.idea-title').on('keyup', buttonDisable)
 $('.idea-description').on('keyup', buttonDisable)
 $('.search-field').on('keyup', search);
+$('#critical').on('click', filterCritical);
+$('#high').on('click', filterHigh);
+$('#normal').on('click', filterNormal);
+$('#low').on('click', filterLow);
+$('#none').on('click', filterNone);
 $('#idea-list').on('click', 'h2', editContentTitle);
 $("#idea-list").on("keyup", "h2", enterKey);
 $('#idea-list').on('click', 'p', editContentBody);
@@ -58,14 +63,6 @@ function prependIdea(idea) {
 
 function toLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
-};
-
-function search() {
-  var searchRequest = $('.search-field').val();
-  $('article').each(function () {
-    var searchResult = $(this).text().indexOf(searchRequest);
-    this.style.display = searchResult > -1 ? "" : "none";
-  })
 };
 
 function inputReset() {
@@ -150,7 +147,6 @@ function decreaseQuality(parse, article) {
   article.find('#quality').text(arrayQuality[parse.qualityCount]);
 }
 
-
 function upImportance() {
   var article = $(this).closest('article');
   var key = $(this).closest('article').attr('id');
@@ -184,4 +180,62 @@ function decreaseImportance(parse, article) {
   parse.importanceCount--;
   parse.importance = arrayImportance[parse.importanceCount];
   article.find('#importance').text(arrayImportance[parse.importanceCount]);
+}
+
+function search() {
+  var searchRequest = $('.search-field').val();
+  $('article').each(function () {
+    var searchResult = $(this).text().indexOf(searchRequest);
+    this.style.display = searchResult > -1 ? "" : "none";
+  })
+};
+
+function filterCritical() {
+  $('#idea-list').html("");
+  Object.values(localStorage).forEach(function (value, index, array) {
+    var parsedImportanceCount = JSON.parse(value).importanceCount;
+    if (parsedImportanceCount == 4) {
+      prependIdea(JSON.parse(value));
+    };
+  })
+}
+
+function filterHigh() {
+  $('#idea-list').html("");
+  Object.values(localStorage).forEach(function (value, index, array) {
+    var parsedImportanceCount = JSON.parse(value).importanceCount;
+    if (parsedImportanceCount == 3) {
+      prependIdea(JSON.parse(value));
+    };
+  })
+}
+
+function filterNormal() {
+  $('#idea-list').html("");
+  Object.values(localStorage).forEach(function (value, index, array) {
+    var parsedImportanceCount = JSON.parse(value).importanceCount;
+    if (parsedImportanceCount == 2) {
+      prependIdea(JSON.parse(value));
+    };
+  })
+}
+
+function filterLow() {
+  $('#idea-list').html("");
+  Object.values(localStorage).forEach(function (value, index, array) {
+    var parsedImportanceCount = JSON.parse(value).importanceCount;
+    if (parsedImportanceCount == 1) {
+      prependIdea(JSON.parse(value));
+    };
+  })
+}
+
+function filterNone() {
+  $('#idea-list').html("");
+  Object.values(localStorage).forEach(function (value, index, array) {
+    var parsedImportanceCount = JSON.parse(value).importanceCount;
+    if (parsedImportanceCount == 0) {
+      prependIdea(JSON.parse(value));
+    };
+  })
 }

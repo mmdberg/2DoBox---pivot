@@ -15,7 +15,7 @@ header {
   display: flex;
   flex-direction: column;
   font-family: 'Roboto Slab', serif;
-  height: 45vh;
+  height: 40vh;
   justify-content: center;
   position: fixed;
   top: 0px;
@@ -197,6 +197,8 @@ p {
     display: inline-block;
     width: 16px;
   }
+
+}
 
   @media screen and (max-width: 360px) {
 
