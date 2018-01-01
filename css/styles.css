@@ -1,4 +1,4 @@
-*,
+  *,
 *:before,
 *:after {
   box-sizing: border-box;
@@ -24,12 +24,8 @@ header {
 
 h1 {
   display: block;
-  margin: 2% 2%;
-  /*margin-top: -5%*/
-}
-
-#idea-header {
-  color: #00A79D;
+  margin: 2%;
+  color: #00A79D
 }
 
 #box-header {
@@ -39,7 +35,7 @@ h1 {
 .input-field {
   border: 1px solid #D1D3D4;
   display: block;
-  height: 19px;
+  height: 20px;
   margin: 2.5% auto;
   resize: none;
   width: 50vw;
@@ -49,17 +45,25 @@ h1 {
   color: #afb0b3;
 }
 
-#save-button {
+.save-button {
   background-color: #00A79D;
   border: none;
   border-radius: 0px;
   color: #FFFFFF;
-  height: 20px;
-  width: 50vw;
 }
 
-#save-button:hover {
+.save-button:hover {
   background-color: #045E55;
+}
+
+.save-button:disabled {
+  background-color: #D1D3D4;
+}
+
+.search-field {
+  left: 25%;
+  position: fixed;
+  top: 44%;
 }
 
 #idea-list {
@@ -72,14 +76,6 @@ h1 {
   overflow: scroll;
   position: fixed;
   width: 100vw;
-}
-
-[name=search-field] {
-  left: 25%;
-  position: fixed;
-  top: 44%;
-  width: 50vw;
-  z-index: 1;
 }
 
 article {
@@ -100,11 +96,11 @@ p {
 }
 
 .button {
-  background-repeat: none;
-  background-size: 2.25em 2.25em;
+  background-repeat: no-repeat;
+  background-size: 2.25em;
   border: none;
   height: 2.25em;
-  margin-right: 10px; 
+  margin-right: 10px;
   width: 2.25em;
 }
 
@@ -116,202 +112,120 @@ p {
   top: 6px;
 }
 
-.remove:hover {
-  background-image: url('../img/delete-hover.svg');  
-}
-
-.quality-up {
-  background-image: url('../img/upvote.svg');
-}
-
-.quality-up:hover {
-  background-image: url('../img/upvote-hover.svg');
-}
-
-.quality-down {
-  background-image: url('../img/downvote.svg');
-}
-
-.quality-down:hover {
-  background-image: url('../img/downvote-hover.svg');
-}
-
-h3 {
+.vote-label {
   color: #6D6E71;
   display: inline-block;
   margin: 0px auto 10px 10px;
   vertical-align: super;
 }
 
+.remove:hover {
+  background-image: url('../img/delete-hover.svg');
+}
+
+.vote-up {
+  background-image: url('../img/upvote.svg');
+}
+
+.vote-up:hover {
+  background-image: url('../img/upvote-hover.svg');
+}
+
+.vote-down {
+  background-image: url('../img/downvote.svg');
+}
+
+.vote-down:hover {
+  background-image: url('../img/downvote-hover.svg');
+}
+
 @media screen and (max-width: 770px) {
   header {
-    height: 41vh;
+    height: 40vh;
   }
   form {
     width: 100vw;
   }
-
   h1 {
     font-size: 25px;
     margin-top: 2%;
   }
-
-  .label {
-    display: flex;
-    justify-content: center;
-    margin-top: -2px;
-    width: 100vw;
-  }
-
   .input-field {
     width: 70%
   }
-
-  
-
-  #save-button {
-    margin-top: 5px;
-    width: 70%;
-  }
-
-  .bottom {
-    display: flex;
-  }
-
-  [name=search-field] {
+  .search-field {
     left: 15%;
     top: 41%;
-    width: 70%;
   }
-
   #idea-list {
     height: 50vh;
     top: 48%;
     width: 100%;
   }
-
   article {
     width: 70vw;
   }
-
   h2 {
     font-size: 20px;
   }
-
   p {
     margin-top: -2%;
     font-size: 15px;
   }
-
   .button {
-    background-size: 1.5em 1.5em;
+    background-size: 1.5em;
     height: 1.5em;
     width: 1.5em;
   }
-
-  .upL {
-    display: inline-block;
-    width: 12px;
-  }
-
-  .downL {
-    display: inline-block;
-    margin-left: 14px;
-    width: 12px;
-  }
-
-  h3 {
-    font-size: 15px;
-    text-align: center;
+  .quality {
+    font-size: 13px;
     vertical-align: initial;
   }
-
+  .arrow {
+    display: inline-block;
+    width: 16px;
+  }
   @media screen and (max-width: 360px) {
-  header {
-    height: 33vh;
-    margin: -5% auto;
+    header {
+      height: 33vh;
+      margin: -5% auto;
+    }
+    h1 {
+      font-size: 20px;
+      margin-top: 1%;
+    }
+    .input-field {
+      width: 90%
+    }
+    .idea-description {
+      height: 52px;
+    }
+    .save-button {
+      margin-top: 5px;
+      width: 90%;
+    }
+    .search-field {
+      left: 5%;
+      top: 32%;
+      width: 90%;
+    }
+    #idea-list {
+      height: 60vh;
+      top: 39%;
+    }
+    article {
+      width: 90vw;
+    }
+    h2 {
+      font-size: 15px;
+    }
+    p {
+      font-size: 10px;
+      margin-top: -2%;
+    }
+    .quality {
+      font-size: 10px;
+      vertical-align: middle;
+      margin-top: 4px;
+    }
   }
-  form {
-    width: 100vw;
-  }
-
-  h1 {
-    font-size: 20px;
-    margin-top: 1%;
-  }
-
-  .label {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-  }
-
-  .input-field {
-    width: 90%
-  }
-
-  [name=idea-description] {
-    height: 40px;
-  }
-
-  #save-button {
-    margin-top: 5px;
-    width: 90%;
-  }
-
-  .bottom {
-    display: flex;
-  }
-
-  [name=search-field] {
-    left: 5%;
-    top: 32%;
-    width: 90%;
-  }
-
-  #idea-list {
-    height: 60vh;
-    top: 39%;
-    width: 100%;
-  }
-
-  article {
-    width: 90vw;
-  }
-
-  h2 {
-    font-size: 15px;
-  }
-
-  p {
-    font-size: 10px;
-    margin-top: -2%;
-  }
-
-  .button {
-    background-size: 1.5em 1.5em;
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  h3 {
-    font-size: 10px;
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  .upL {
-    display: inline-block;
-    width: 10px;
-  }
-
-  .downL {
-    display: inline-block;
-    margin-left: 14px;
-    width: 10px;
-  }
-}
-
-
-
-
