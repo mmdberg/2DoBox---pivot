@@ -3,7 +3,9 @@ $('.idea-title').on('keyup', buttonDisable)
 $('.idea-description').on('keyup', buttonDisable)
 $('.search-field').on('keyup', search);
 $('#idea-list').on('click', 'h2', editContentTitle);
+$("#idea-list").on("keyup", "h2", enterKey);
 $('#idea-list').on('click', 'p', editContentBody);
+$('#idea-list').on('keyup', 'p', enterKey);
 $('#idea-list').on('click', '.remove', removeIdea);
 $('#idea-list').on('click', '#quality-up', upQuality);
 $('#idea-list').on('click', '#quality-down', downQuality);
@@ -80,7 +82,6 @@ function buttonDisable() {
   }
 }
 
-
 function editContentTitle() {
   $(this).focusout(function () {
     var key = $(this).closest('article').attr('id');
@@ -98,6 +99,13 @@ function editContentBody() {
     toLocalStorage(key, parsedIdea);
   })
 };
+
+function enterKey(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    this.blur();
+  }
+}
 
 function removeIdea() {
   var article = $(this).closest('article');
