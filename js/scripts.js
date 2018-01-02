@@ -26,6 +26,14 @@ function pageLoad() {
   });
 };
 
+function buttonDisable() {
+  if ($(this).val() == '') {
+    $('.save-button').prop('disabled', true)
+  } else {
+    $('.save-button').prop('disabled', false)
+  }
+}
+
 function makeIdea(event) {
   var idea = new Idea(Date.now(), $('.idea-title').val(), $('.idea-description').val(), 'Swill', 0, 'Normal', 2);
   event.preventDefault();
