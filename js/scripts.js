@@ -19,6 +19,14 @@ function pageLoad() {
   });
 };
 
+function buttonDisable() {
+  if ($(this).val() == '') {
+    $('.save-button').prop('disabled', true)
+  } else {
+    $('.save-button').prop('disabled', false)
+  }
+}
+
 function makeIdea(event) {
   var idea = new Idea(Date.now(), $('.idea-title').val(), $('.idea-description').val(), 'Swill', 0, 'Normal', 2);
   event.preventDefault();
@@ -141,7 +149,6 @@ function decreaseQuality(parse, article) {
   parse.quality = arrayQuality[parse.qualityCount];
   article.find('#quality').text(arrayQuality[parse.qualityCount]);
 }
-
 
 function upImportance() {
   var article = $(this).closest('article');
