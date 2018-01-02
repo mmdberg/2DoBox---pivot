@@ -112,7 +112,7 @@ p {
   top: 6px;
 }
 
-.quality {
+.vote-label {
   color: #6D6E71;
   display: inline-block;
   margin: 0px auto 10px 10px;
@@ -120,22 +120,22 @@ p {
 }
 
 .remove:hover {
-  background-image: url('../img/delete-hover.svg');  
+  background-image: url('../img/delete-hover.svg');
 }
 
-.quality-up {
+.vote-up {
   background-image: url('../img/upvote.svg');
 }
 
-.quality-up:hover {
+.vote-up:hover {
   background-image: url('../img/upvote-hover.svg');
 }
 
-.quality-down {
+.vote-down {
   background-image: url('../img/downvote.svg');
 }
 
-.quality-down:hover {
+.vote-down:hover {
   background-image: url('../img/downvote-hover.svg');
 }
 
@@ -188,7 +188,7 @@ p {
     width: 1.5em;
   }
 
-  .quality {
+  .vote-label {
     font-size: 13px;
     vertical-align: initial;
   }
@@ -247,10 +247,11 @@ p {
     margin-top: -2%;
   }
 
-  .quality {
+  .vote-label {
     font-size: 10px;
     vertical-align: middle;
     margin-top: 4px;
   }
 
 }
+
