@@ -138,9 +138,18 @@ function showComplete () {
  var inStorage = JSON.parse(Object.values(localStorage).length);
  console.log(inStorage);
 for (var i = 0; i < inStorage; i++) {
+if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'complete') {
  prependIdea(JSON.parse(Object.values(localStorage)[i]));
 };
 };
+// function removeIdea() {
+//   var article = $(this).closest('article');
+//   article.fadeOut(function () {
+//     $(this).remove();
+//   })
+
+};
+
 
 function editContentTitle() {
   $(this).focusout(function () {
