@@ -73,7 +73,7 @@ h1 {
   top: 44%;
 }
 
-#idea-list {
+.bottom-section {
   align-items: center;
   bottom: 0px;
   display: flex;
@@ -83,6 +83,10 @@ h1 {
   overflow: scroll;
   position: fixed;
   width: 100vw;
+}
+
+#idea-list {
+
 }
 
 article {
@@ -126,9 +130,13 @@ p {
   vertical-align: super;
 }
 
+.show-more {
+  float: right;
+  margin-bottom: 50px;
+}
+
 .complete {
   text-decoration: line-through;
-/*  display: none;*/
 }
 
 .remove:hover {
@@ -175,7 +183,7 @@ p {
     top: 41%;
   }
 
-  #idea-list {
+  .bottom-section {
     height: 50vh;
     top: 48%;
     width: 100%;
