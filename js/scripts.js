@@ -35,22 +35,31 @@ function pageLoad() {
 
 var countCount = 0;
 
+function pageLoad() {
+  for (var i = 0; i < localStorage.length; i++) {
+    if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+      countCount++;
+      if (countCount < 11) {
+        console.log(i);
+        
+        prependIdea(JSON.parse(Object.values(localStorage)[i]));
+      }
+    }
+  }
 
-// function pageLoad() {
-//   // for (var i = 0; i < localStorage.length; i++) {
-//   //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
-//   //     countCount++;
-//   //     if (countCount < 11) {
-//   //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
-//   //     }
-//   //   }
-//   // }
+  // $.each(localStorage, function (key, value) {
 
-//   $.each(localStorage, function (key, value) {
+  //   console.log(JSON.parse(localStorage.getItem(localStorage.key(value))));
 
-//     console.log(value.);
+  // });
 
-//   });
+
+  // localStorage.forEach() {
+    
+  //       console.log(JSON.parse(value).completed);
+    
+  //     });
+
 
   // for (var i = 0; i < localStorage.length; i++) {
   //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
@@ -317,22 +326,22 @@ var j = 9;
 
 function showMore() {
 
-  console.log(countCount);
+  var i =+ 9;
+  j =+ 10;
+  if (i < localStorage.length - 1) {
+    for (i; i < j; i++) {
+      appendIdea(JSON.parse(Object.values(localStorage)[i]));
+    };
+  };
 
-  // j += 10;
-  // if (i < localStorage.length - 1) {
-  //   for (i; i < j; i++) {
-  //     console.log("i: ", i);
-  //     appendIdea(JSON.parse(Object.values(localStorage)[i]));
-  //   };
-  // };
-  for (var i = 0; i < localStorage.length; i++) {
-    if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
-      if (numberOfShownCards < j) {
-        prependIdea(JSON.parse(Object.values(localStorage)[i]));
-      }
-    }
-  }
+
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+  //     if (numberOfShownCards < j) {
+  //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //     }
+  //   }
+  // }
 };
 
 function taskComplete() {
