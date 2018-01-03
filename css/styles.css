@@ -127,8 +127,11 @@ p {
 }
 
 .complete {
-  text-decoration: line-through;
-/*  display: none;*/
+  background-color: #93959847;
+}
+
+.complete .button {
+  background-color: #93959847;
 }
 
 .remove:hover {
