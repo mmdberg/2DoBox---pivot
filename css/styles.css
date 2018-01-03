@@ -60,6 +60,13 @@ h1 {
   background-color: #D1D3D4;
 }
 
+.show-completed {
+  background-color: #00A79D;
+  border: none;
+  border-radius: 0px;
+  color: black;
+}
+
 .search-field {
   left: 25%;
   position: fixed;
@@ -126,6 +133,15 @@ p {
 .show-more {
   float: right;
   margin-bottom: 50px;
+}
+
+.complete {
+  background-color: #93959847;
+}
+
+.complete .button {
+  background-color: #93959847;
+/*  text-decoration: line-through;*/
 }
 
 .remove:hover {
@@ -265,3 +281,4 @@ p {
   }
 
 }
+
