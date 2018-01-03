@@ -16,15 +16,21 @@ $('#idea-list').on('click', '#quality-up', upQuality);
 $('#idea-list').on('click', '#quality-down', downQuality);
 $('#idea-list').on('click', '#importance-up', upImportance);
 $('#idea-list').on('click', '#importance-down', downImportance);
+$('#idea-list').on('click', '.completed-button', taskComplete);
+$('.show-completed').on('click', showComplete);
 
 $(document).ready(pageLoad);
 $('.save-button').prop('disabled', true)
 
 function pageLoad() {
-  Object.keys(localStorage).forEach(function (value) {
-    prependIdea(JSON.parse(localStorage.getItem(value)));
-  });
-};
+ var inStorage = JSON.parse(Object.values(localStorage).length);
+ console.log(inStorage);
+  for (var i = 0; i < inStorage; i++) {
+  if ((JSON.parse(Object.values(localStorage)[i]).completed) === true) {
+    prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  }}
+
+ };
 
 function buttonDisable() {
   if ($(this).val() == '') {
@@ -32,7 +38,7 @@ function buttonDisable() {
   } else {
     $('.save-button').prop('disabled', false)
   }
-}
+};
 
 function makeIdea(event) {
   var idea = new Idea(Date.now(), $('.idea-title').val(), $('.idea-description').val(), 'Swill', 0, 'Normal', 2);
@@ -43,7 +49,7 @@ function makeIdea(event) {
   $('.save-button').prop('disabled', true);
 };
 
-function Idea(id, title, body, quality, qualityCount, importance, importanceCount) {
+function Idea(id, title, body, quality, qualityCount, importance, importanceCount, completed) {
   this.id = id;
   this.title = title;
   this.body = body;
@@ -51,11 +57,12 @@ function Idea(id, title, body, quality, qualityCount, importance, importanceCoun
   this.qualityCount = qualityCount || 0;
   this.importance = importance;
   this.importanceCount = importanceCount || 0;
+  this.completed = completed || false;
 }
 
 function prependIdea(idea) {
   $('#idea-list').prepend(
-    `<article id="${idea.id}">
+    `<article id="${idea.id}" class="${idea.completed}">
       <h2 contenteditable="true">${idea.title}</h2>
       <button class="remove button"></button>
       <p class="idea-body" contenteditable="true">${idea.body}</p>
@@ -65,6 +72,7 @@ function prependIdea(idea) {
       <button class="vote-up arrow button" id="importance-up"></button>
       <button class="vote-down arrow button" id="importance-down"></button>
       <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      <button class="completed-button">Task Completed</button>
     </article>`
   );
 };
@@ -86,6 +94,36 @@ function buttonDisable() {
     $('.save-button').prop('disabled', false)
   }
 }
+
+function showComplete () {
+ console.log('buttonworking');
+ var inStorage = JSON.parse(Object.values(localStorage).length);
+ console.log(inStorage);
+for (var i = 0; i < inStorage; i++) {
+ prependIdea(JSON.parse(Object.values(localStorage)[i]));
+};
+//   var parsedIdea = JSON.parse(localStorage.getItem(value));
+//     if (parsedIdea['completed'] === true) {
+
+// }
+};
+
+
+// function pageLoad() {
+//   Object.keys(localStorage).forEach(function (value, i) {
+//     prependIdea(JSON.parse(localStorage.getItem(value)));
+//     var parsedIdea = JSON.parse(localStorage.getItem(value));
+//     console.log(parsedIdea)
+//   if (parsedIdea['completed'] === true) {
+
+//       // var article = $(this).closest('article');
+//       // $('article').hide();
+//       // // $($('h2')[value]).parent().hide();
+//       // console.log(value);
+//           // $($('h2')[i]).parent().hide();
+//     }
+//   });
+// };
 
 function editContentTitle() {
   $(this).focusout(function () {
@@ -246,4 +284,20 @@ function filterNone() {
       prependIdea(JSON.parse(value));
     };
   })
+};
+
+function taskComplete() {
+  $(this).closest('article').children('h2').toggleClass('complete');
+  var ideaID = $(this).closest('article').attr('id');
+  var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
+  if (parsedIdea['completed'] === true) {
+    parsedIdea['completed'] = false;
+    console.log(false);
+  } else if (parsedIdea['completed'] === false){
+    parsedIdea['completed'] = true;
+    console.log(true);
+  };
+  var stringifiedObject = JSON.stringify(parsedIdea);
+  localStorage.setItem(ideaID, stringifiedObject);
+
 }
