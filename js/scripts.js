@@ -2,13 +2,14 @@ $('.save-button').on('click', makeIdea);
 $('.idea-title').on('keyup', buttonDisable)
 $('.idea-description').on('keyup', buttonDisable)
 $('.search-field').on('keyup', search);
+$('.show-more').on('click', showMore);
 $('#critical').on('click', filterCritical);
 $('#high').on('click', filterHigh);
 $('#normal').on('click', filterNormal);
 $('#low').on('click', filterLow);
 $('#none').on('click', filterNone);
 $('#idea-list').on('click', 'h2', editContentTitle);
-$("#idea-list").on("keyup", "h2", enterKey);
+$("#idea-list").on("keyup", 'h2', enterKey);
 $('#idea-list').on('click', 'p', editContentBody);
 $('#idea-list').on('keyup', 'p', enterKey);
 $('#idea-list').on('click', '.remove', removeIdea);
@@ -22,6 +23,7 @@ $('.show-completed').on('click', showComplete);
 $(document).ready(pageLoad);
 $('.save-button').prop('disabled', true)
 
+//function for 'notComplete'
 function pageLoad() {
  var inStorage = JSON.parse(Object.values(localStorage).length);
  console.log(inStorage);
@@ -30,14 +32,34 @@ function pageLoad() {
     prependIdea(JSON.parse(Object.values(localStorage)[i]));
   }}
 
- };
 
-function buttonDisable() {
-  if ($(this).val() == '') {
-    $('.save-button').prop('disabled', true)
-  } else {
-    $('.save-button').prop('disabled', false)
-  }
+var countCount = 0;
+
+
+// function pageLoad() {
+//   // for (var i = 0; i < localStorage.length; i++) {
+//   //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+//   //     countCount++;
+//   //     if (countCount < 11) {
+//   //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+//   //     }
+//   //   }
+//   // }
+
+//   $.each(localStorage, function (key, value) {
+
+//     console.log(value.);
+
+//   });
+
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+  //     countCount++;
+  //     if (countCount < 11) {
+  //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //     }
+  //   }
+  // }
 };
 
 function makeIdea(event) {
@@ -63,6 +85,23 @@ function Idea(id, title, body, quality, qualityCount, importance, importanceCoun
 function prependIdea(idea) {
   $('#idea-list').prepend(
     `<article id="${idea.id}" class="${idea.completed}">
+      <h2 contenteditable="true">${idea.title}</h2>
+      <button class="remove button"></button>
+      <p class="idea-body" contenteditable="true">${idea.body}</p>
+      <button class="vote-up arrow button" id="quality-up"></button>
+      <button class="vote-down arrow button" id="quality-down"></button>
+      <p class="vote-label">quality: <span id="quality">${idea.quality}</span></p>
+      <button class="vote-up arrow button" id="importance-up"></button>
+      <button class="vote-down arrow button" id="importance-down"></button>
+      <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      <button class="completed-button">Task Completed</button>
+    </article>`
+  );
+};
+
+function appendIdea(idea) {
+  $('#idea-list').append(
+    `<article id="${idea.id}">
       <h2 contenteditable="true">${idea.title}</h2>
       <button class="remove button"></button>
       <p class="idea-body" contenteditable="true">${idea.body}</p>
@@ -157,15 +196,15 @@ function downQuality() {
   toLocalStorage(key, parsedIdea);
 };
 
-var arrayQuality = ["Swill", "Plausible", "Genius"];
-
 function increaseQuality(parse, article) {
+  var arrayQuality = ["Swill", "Plausible", "Genius"];
   parse.qualityCount++;
   parse.quality = arrayQuality[parse.qualityCount];
   article.find('#quality').text(arrayQuality[parse.qualityCount]);
 }
 
 function decreaseQuality(parse, article) {
+  var arrayQuality = ["Swill", "Plausible", "Genius"];
   parse.qualityCount--;
   parse.quality = arrayQuality[parse.qualityCount];
   article.find('#quality').text(arrayQuality[parse.qualityCount]);
@@ -192,15 +231,15 @@ function downImportance() {
   toLocalStorage(key, parsedIdea);
 };
 
-var arrayImportance = ["None", "Low", "Normal", "High", "Critical"];
-
 function increaseImportance(parse, article) {
+  var arrayImportance = ["None", "Low", "Normal", "High", "Critical"];
   parse.importanceCount++;
   parse.importance = arrayImportance[parse.importanceCount];
   article.find('#importance').text(arrayImportance[parse.importanceCount]);
 }
 
 function decreaseImportance(parse, article) {
+  var arrayImportance = ["None", "Low", "Normal", "High", "Critical"];
   parse.importanceCount--;
   parse.importance = arrayImportance[parse.importanceCount];
   article.find('#importance').text(arrayImportance[parse.importanceCount]);
@@ -216,7 +255,7 @@ function search() {
 
 function filterCritical() {
   $('#idea-list').html("");
-  Object.values(localStorage).forEach(function (value, index, array) {
+  Object.values(localStorage).forEach(function (value) {
     var parsedImportanceCount = JSON.parse(value).importanceCount;
     if (parsedImportanceCount == 4) {
       prependIdea(JSON.parse(value));
@@ -226,7 +265,7 @@ function filterCritical() {
 
 function filterHigh() {
   $('#idea-list').html("");
-  Object.values(localStorage).forEach(function (value, index, array) {
+  Object.values(localStorage).forEach(function (value) {
     var parsedImportanceCount = JSON.parse(value).importanceCount;
     if (parsedImportanceCount == 3) {
       prependIdea(JSON.parse(value));
@@ -236,7 +275,7 @@ function filterHigh() {
 
 function filterNormal() {
   $('#idea-list').html("");
-  Object.values(localStorage).forEach(function (value, index, array) {
+  Object.values(localStorage).forEach(function (value) {
     var parsedImportanceCount = JSON.parse(value).importanceCount;
     if (parsedImportanceCount == 2) {
       prependIdea(JSON.parse(value));
@@ -246,7 +285,7 @@ function filterNormal() {
 
 function filterLow() {
   $('#idea-list').html("");
-  Object.values(localStorage).forEach(function (value, index, array) {
+  Object.values(localStorage).forEach(function (value) {
     var parsedImportanceCount = JSON.parse(value).importanceCount;
     if (parsedImportanceCount == 1) {
       prependIdea(JSON.parse(value));
@@ -256,12 +295,35 @@ function filterLow() {
 
 function filterNone() {
   $('#idea-list').html("");
-  Object.values(localStorage).forEach(function (value, index, array) {
+  Object.values(localStorage).forEach(function (value) {
     var parsedImportanceCount = JSON.parse(value).importanceCount;
     if (parsedImportanceCount == 0) {
       prependIdea(JSON.parse(value));
     };
-  })
+  });
+};
+
+
+var j = 9;
+
+function showMore() {
+
+  console.log(countCount);
+
+  // j += 10;
+  // if (i < localStorage.length - 1) {
+  //   for (i; i < j; i++) {
+  //     console.log("i: ", i);
+  //     appendIdea(JSON.parse(Object.values(localStorage)[i]));
+  //   };
+  // };
+  for (var i = 0; i < localStorage.length; i++) {
+    if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+      if (numberOfShownCards < j) {
+        prependIdea(JSON.parse(Object.values(localStorage)[i]));
+      }
+    }
+  }
 };
 
 function taskComplete() {
@@ -275,5 +337,5 @@ function taskComplete() {
   };
   var stringifiedObject = JSON.stringify(parsedIdea);
   localStorage.setItem(ideaID, stringifiedObject);
+};
 
-}
