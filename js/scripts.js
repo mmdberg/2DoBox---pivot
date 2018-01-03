@@ -79,7 +79,7 @@ function Idea(id, title, body, quality, qualityCount, importance, importanceCoun
   this.qualityCount = qualityCount || 0;
   this.importance = importance;
   this.importanceCount = importanceCount || 0;
-  this.completed = completed || false;
+  this.completed = completed || 'notComplete';
 }
 
 function prependIdea(idea) {
@@ -327,15 +327,13 @@ function showMore() {
 };
 
 function taskComplete() {
-  $(this).closest('article').children('h2').toggleClass('complete');
+  $(this).closest('article').toggleClass('complete');
   var ideaID = $(this).closest('article').attr('id');
   var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
-  if (parsedIdea['completed'] === true) {
-    parsedIdea['completed'] = false;
-    console.log(false);
-  } else if (parsedIdea['completed'] === false) {
-    parsedIdea['completed'] = true;
-    console.log(true);
+  if (parsedIdea['completed'] === 'complete') {
+    parsedIdea['completed'] = 'notComplete';
+  } else if (parsedIdea['completed'] === 'notComplete'){
+    parsedIdea['completed'] = 'complete';
   };
   var stringifiedObject = JSON.stringify(parsedIdea);
   localStorage.setItem(ideaID, stringifiedObject);
