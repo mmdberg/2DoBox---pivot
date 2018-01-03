@@ -49,8 +49,6 @@ function pageLoad() {
   //     }
   //   }
   // }
-
-
 };
 
 function makeIdea(event) {
@@ -102,6 +100,7 @@ function appendIdea(idea) {
       <button class="vote-up arrow button" id="importance-up"></button>
       <button class="vote-down arrow button" id="importance-down"></button>
       <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      <button class="completed-button">Task Completed</button>
     </article>`
   );
 };
@@ -331,3 +330,4 @@ function taskComplete() {
   var stringifiedObject = JSON.stringify(parsedIdea);
   localStorage.setItem(ideaID, stringifiedObject);
 };
+
