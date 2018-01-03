@@ -21,7 +21,6 @@ $('#idea-list').on('click', '#importance-down', downImportance);
 $(document).ready(pageLoad);
 $('.save-button').prop('disabled', true)
 
-
 function pageLoad() {
   // Object.keys(localStorage).forEach(function (value) {
   //   prependIdea(JSON.parse(localStorage.getItem(value)));
@@ -265,14 +264,15 @@ function filterNone() {
   })
 }
 
+var i = 10;
+var j = 9;
+
 function showMore() {
-  var i = 0;
-  var j = 9;
-  i += 10;
   j += 10;
-  for (i; i <= j; i++) {
-    console.log("i ", i);
-    console.log("j ", j);
-    appendIdea(JSON.parse(Object.values(localStorage)[i]));
-  };
+  if (i < (Object.values(localStorage).length - 1)) {
+    for (i; i < j; i++) {
+      console.log("i: ", i);
+      appendIdea(JSON.parse(Object.values(localStorage)[i]));
+    };
+  }
 }
