@@ -136,7 +136,12 @@ p {
 }
 
 .complete {
-  text-decoration: line-through;
+  background-color: #93959847;
+}
+
+.complete .button {
+  background-color: #93959847;
+/*  text-decoration: line-through;*/
 }
 
 .remove:hover {
