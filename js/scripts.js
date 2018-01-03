@@ -17,18 +17,39 @@ $('#idea-list').on('click', '#quality-up', upQuality);
 $('#idea-list').on('click', '#quality-down', downQuality);
 $('#idea-list').on('click', '#importance-up', upImportance);
 $('#idea-list').on('click', '#importance-down', downImportance);
+$('#idea-list').on('click', '.completed-button', taskComplete);
+$('.show-completed').on('click', showComplete);
 
 $(document).ready(pageLoad);
 $('.save-button').prop('disabled', true)
 
-function pageLoad() {
-  // Object.keys(localStorage).forEach(function (value) {
-  //   prependIdea(JSON.parse(localStorage.getItem(value)));
-  // });
+var countCount = 0;
 
-  for (var i = 0; i <= 9; i++) {
-    prependIdea(JSON.parse(Object.values(localStorage)[i]));
-  };
+function pageLoad() {
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+  //     countCount++;
+  //     if (countCount < 11) {
+  //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //     }
+  //   }
+  // }
+
+  $.each(localStorage, function (key, value) {
+
+    console.log(value.);
+
+  });
+
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+  //     countCount++;
+  //     if (countCount < 11) {
+  //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //     }
+  //   }
+  // }
+
 
 };
 
@@ -41,7 +62,7 @@ function makeIdea(event) {
   $('.save-button').prop('disabled', true);
 };
 
-function Idea(id, title, body, quality, qualityCount, importance, importanceCount) {
+function Idea(id, title, body, quality, qualityCount, importance, importanceCount, completed) {
   this.id = id;
   this.title = title;
   this.body = body;
@@ -49,11 +70,12 @@ function Idea(id, title, body, quality, qualityCount, importance, importanceCoun
   this.qualityCount = qualityCount || 0;
   this.importance = importance;
   this.importanceCount = importanceCount || 0;
+  this.completed = completed || false;
 }
 
 function prependIdea(idea) {
   $('#idea-list').prepend(
-    `<article id="${idea.id}">
+    `<article id="${idea.id}" class="${idea.completed}">
       <h2 contenteditable="true">${idea.title}</h2>
       <button class="remove button"></button>
       <p class="idea-body" contenteditable="true">${idea.body}</p>
@@ -63,6 +85,7 @@ function prependIdea(idea) {
       <button class="vote-up arrow button" id="importance-up"></button>
       <button class="vote-down arrow button" id="importance-down"></button>
       <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      <button class="completed-button">Task Completed</button>
     </article>`
   );
 };
@@ -100,6 +123,15 @@ function buttonDisable() {
     $('.save-button').prop('disabled', false)
   }
 }
+
+function showComplete() {
+  console.log('buttonworking');
+  var inStorage = JSON.parse(Object.values(localStorage).length);
+  console.log(inStorage);
+  for (var i = 0; i < inStorage; i++) {
+    prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  };
+};
 
 function editContentTitle() {
   $(this).focusout(function () {
@@ -154,8 +186,6 @@ function downQuality() {
   }
   toLocalStorage(key, parsedIdea);
 };
-
-
 
 function increaseQuality(parse, article) {
   var arrayQuality = ["Swill", "Plausible", "Genius"];
@@ -261,18 +291,43 @@ function filterNone() {
     if (parsedImportanceCount == 0) {
       prependIdea(JSON.parse(value));
     };
-  })
-}
+  });
+};
 
-var i = 10;
+
 var j = 9;
 
 function showMore() {
-  j += 10;
-  if (i < (Object.values(localStorage).length - 1)) {
-    for (i; i < j; i++) {
-      console.log("i: ", i);
-      appendIdea(JSON.parse(Object.values(localStorage)[i]));
-    };
+
+  console.log(countCount);
+
+  // j += 10;
+  // if (i < localStorage.length - 1) {
+  //   for (i; i < j; i++) {
+  //     console.log("i: ", i);
+  //     appendIdea(JSON.parse(Object.values(localStorage)[i]));
+  //   };
+  // };
+  for (var i = 0; i < localStorage.length; i++) {
+    if ((JSON.parse(Object.values(localStorage)[i]).completed) === false) {
+      if (numberOfShownCards < j) {
+        prependIdea(JSON.parse(Object.values(localStorage)[i]));
+      }
+    }
   }
-}
+};
+
+function taskComplete() {
+  $(this).closest('article').children('h2').toggleClass('complete');
+  var ideaID = $(this).closest('article').attr('id');
+  var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
+  if (parsedIdea['completed'] === true) {
+    parsedIdea['completed'] = false;
+    console.log(false);
+  } else if (parsedIdea['completed'] === false) {
+    parsedIdea['completed'] = true;
+    console.log(true);
+  };
+  var stringifiedObject = JSON.stringify(parsedIdea);
+  localStorage.setItem(ideaID, stringifiedObject);
+};
