@@ -10,8 +10,8 @@
 
 <body>
   <header>
-    <h1>TO
-      <span id="box-header">DO</span>
+    <h1>2DO
+      <span id="box-header">BOX</span>
     </h1>
     <form>
       <input type="text" class="input-field idea-title" placeholder="Title" required>
@@ -21,19 +21,20 @@
     </form>
   </header>
   <section class="bottom search-field">
-    <button id="critical">Critical</button>
-    <button id="high">High</button>
-    <button id="normal">Normal</button>
-    <button id="low">Low</button>
-    <button id="none">None</button>
+    <div class="imp-buttons">
+    <button class="importance-button" id="critical">Critical</button>
+    <button class="importance-button" id="high">High</button>
+    <button class="importance-button" id="normal">Normal</button>
+    <button class="importance-button" id="low">Low</button>
+    <button class="importance-button" id="none">None</button>
+    </div>
     <input type="text" class="input-field" placeholder="Filter">
   </section>
   <div class="bottom-section">
     <section id="idea-list">
     </section>
-    <button class="show-more">Show more TODOs ...</button>
+    <button class="show-more">Show more TODOs</button>
   </div>
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')
