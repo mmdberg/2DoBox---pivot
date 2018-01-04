@@ -30,10 +30,11 @@ function pageLoad() {
     if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
       countCount++;
       if (countCount < 11) {
+        console.log(i);
         prependIdea(JSON.parse(Object.values(localStorage)[i]));
-      };
-    };
-  };
+      }
+    }
+  }
 };
 
 function makeIdea(event) {
@@ -62,12 +63,16 @@ function prependIdea(idea) {
       <h2 contenteditable="true">${idea.title}</h2>
       <button class="remove button"></button>
       <p class="idea-body" contenteditable="true">${idea.body}</p>
+      <div class="quality-box"></div>
       <button class="vote-up arrow button" id="quality-up"></button>
       <button class="vote-down arrow button" id="quality-down"></button>
       <p class="vote-label">quality: <span id="quality">${idea.quality}</span></p>
+      </div>
+      <div>
       <button class="vote-up arrow button" id="importance-up"></button>
       <button class="vote-down arrow button" id="importance-down"></button>
       <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      </div>
       <button class="completed-button">Task Completed</button>
     </article>`
   );
@@ -113,8 +118,9 @@ function showComplete() {
   for (var i = 0; i < inStorage; i++) {
     if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'complete') {
       prependIdea(JSON.parse(Object.values(localStorage)[i]));
-    };
-  };
+    }
+  }
+  $('.show-completed').prop('disabled', true)
 };
 
 function editContentTitle() {
@@ -295,7 +301,9 @@ function taskComplete() {
   var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
   if (parsedIdea['completed'] === 'complete') {
     parsedIdea['completed'] = 'notComplete';
+
   } else if (parsedIdea['completed'] === 'notComplete') {
+
     parsedIdea['completed'] = 'complete';
   };
   var stringifiedObject = JSON.stringify(parsedIdea);

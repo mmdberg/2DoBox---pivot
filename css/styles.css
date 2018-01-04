@@ -64,13 +64,49 @@ h1 {
   background-color: #00A79D;
   border: none;
   border-radius: 0px;
-  color: black;
+  color: #FFFFFF;
+}
+
+.show-completed:disabled {
+  background-color: #D1D3D4;
 }
 
 .search-field {
   left: 25%;
   position: fixed;
-  top: 44%;
+  top: 42%;
+}
+
+.imp-buttons {
+  text-align: center;
+}
+
+.importance-button {
+/*  background-color: #00A79D;*/
+  border-radius: 0px;
+  border: none;
+  color: black;
+  width: 25%;
+}
+
+#critical {
+  background-color: #e76e6e;
+}
+
+#high {
+  background-color: orange;
+}
+
+#normal {
+  background-color: yellow;
+}
+
+#low {
+  background-color: #c2f3f3;
+}
+
+#none {
+  background-color: #f9f0e0;
 }
 
 .bottom-section {
@@ -85,9 +121,6 @@ h1 {
   width: 100vw;
 }
 
-#idea-list {
-
-}
 
 article {
   border-bottom: 1px solid #D1D3D4;
@@ -111,7 +144,7 @@ p {
   background-size: 2.25em;
   border: none;
   height: 2.25em;
-  margin-right: 10px; 
+/*  margin-right: 5px; */
   width: 2.25em;
 }
 
@@ -126,13 +159,35 @@ p {
 .vote-label {
   color: #6D6E71;
   display: inline-block;
-  margin: 0px auto 10px 10px;
+  margin: 0px 20px 10px 10px;
   vertical-align: super;
 }
 
 .show-more {
-  float: right;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
+  background-color: #00A79D;
+  border: none;
+  border-radius: 0px;
+  color: #FFFFFF;
+  padding: 7px;
+  padding-bottom: 21px;
+}
+
+.completed-button {
+  background-color: #00A79D;
+  border: none;
+  border-radius: 0px;
+  color: #FFFFFF;
+  display: block;
+  width: 100%;
+}
+
+.complete {
+  background-color: #93959847;
+}
+
+.complete .button {
+  background-color: #93959847;
 }
 
 .complete {
@@ -184,13 +239,13 @@ p {
   }
 
   .search-field {
-    left: 15%;
+    left: 13%;
     top: 41%;
+    width: 74%;
   }
 
   .bottom-section {
-    height: 50vh;
-    top: 48%;
+    height: 48vh;
     width: 100%;
   }
 
@@ -229,7 +284,7 @@ p {
 
   header {
     height: 33vh;
-    margin: -5% auto;
+/*    margin: -5% auto;*/
   }
 
   h1 {
@@ -252,7 +307,7 @@ p {
 
   .search-field {
     left: 5%;
-    top: 32%;
+    top: 35%;
     width: 90%;
   }
 
@@ -280,4 +335,9 @@ p {
     margin-top: 4px;
   }
 
+  .show-more {
+    margin-top: 15px;
+  }
+
 }
+
