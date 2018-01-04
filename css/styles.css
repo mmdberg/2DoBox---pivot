@@ -190,6 +190,15 @@ p {
   background-color: #93959847;
 }
 
+.complete {
+  background-color: #93959847;
+}
+
+.complete .button {
+  background-color: #93959847;
+/*  text-decoration: line-through;*/
+}
+
 .remove:hover {
   background-image: url('../img/delete-hover.svg');
 }
