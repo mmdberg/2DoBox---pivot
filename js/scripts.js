@@ -23,18 +23,26 @@ $('.show-completed').on('click', showComplete);
 $(document).ready(pageLoad);
 $('.save-button').prop('disabled', true)
 
-var countCount = 0;
+var arrayStore = [];
 
 function pageLoad() {
-  for (var i = 0; i < localStorage.length; i++) {
-    if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
-      countCount++;
-      if (countCount < 11) {
-        prependIdea(JSON.parse(Object.values(localStorage)[i]));
-      }
+
+  var storage = Object.values(localStorage);
+  storage.forEach(function (value, index) {
+    if (((JSON.parse(Object.values(localStorage)[index]).completed) === 'notComplete')) {
+      arrayStore.push(JSON.parse(value));
     }
-  }
+  })
+
+  var storage = arrayStore.length > 9 ? 10 : arrayStore.length;
+  for (var i = 0; i < storage; i++) {
+    prependIdea(arrayStore[i]);
+  };
+  console.log('arrayStore: ', arrayStore);
 };
+// why is this not showing the updated array?
+console.log('arrayStore: ', arrayStore);
+
 
 function makeIdea(event) {
   var idea = new Idea(Date.now(), $('.idea-title').val(), $('.idea-description').val(), 'Swill', 0, 'Normal', 2, 'notComplete');
@@ -264,14 +272,31 @@ function filterNone() {
 };
 
 function showMore() {
-  for (var i = 0; i < localStorage.length; i++) {
-    if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
-      countCount++;
-      if (countCount > 22) {
-        prependIdea(JSON.parse(Object.values(localStorage)[i]));
-      };
-    };
-  };
+
+  // var storage = arrayStore.length > 19 ? 20 : arrayStore.length;
+  // for (var i = 0; i < storage; i++) {
+  //   prependIdea(arrayStore[i]);
+  // };
+
+
+  // var completedLength = Object.values(localStorage)
+  // var storage = localStorage.length > 9 ? 10 : localStorage.length;
+  // for (var i = 0; i < storage; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
+  //     prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //   };
+  // };
+
+
+  // for (var i = 0; i < localStorage.length; i++) {
+  //   if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
+  //     countCount++;
+  //     if (countCount > 22) {
+  //       prependIdea(JSON.parse(Object.values(localStorage)[i]));
+  //     };
+  //   };
+  // };
+
 };
 
 function taskComplete() {
