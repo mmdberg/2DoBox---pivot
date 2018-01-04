@@ -301,9 +301,7 @@ function taskComplete() {
   var parsedIdea = JSON.parse(localStorage.getItem(ideaID));
   if (parsedIdea['completed'] === 'complete') {
     parsedIdea['completed'] = 'notComplete';
-
   } else if (parsedIdea['completed'] === 'notComplete') {
-
     parsedIdea['completed'] = 'complete';
   };
   var stringifiedObject = JSON.stringify(parsedIdea);
