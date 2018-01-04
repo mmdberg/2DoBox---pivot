@@ -30,7 +30,6 @@ function pageLoad() {
     if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
       countCount++;
       if (countCount < 11) {
-        console.log(i);
         prependIdea(JSON.parse(Object.values(localStorage)[i]));
       }
     }
