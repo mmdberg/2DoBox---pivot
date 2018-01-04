@@ -23,9 +23,9 @@ header {
 }
 
 h1 {
+  color: #00A79D;
   display: block;
   margin: 2%;
-  color: #00A79D
 }
 
 #box-header {
@@ -82,7 +82,6 @@ h1 {
 }
 
 .importance-button {
-/*  background-color: #00A79D;*/
   border-radius: 0px;
   border: none;
   color: black;
@@ -144,7 +143,6 @@ p {
   background-size: 2.25em;
   border: none;
   height: 2.25em;
-/*  margin-right: 5px; */
   width: 2.25em;
 }
 
@@ -164,13 +162,13 @@ p {
 }
 
 .show-more {
-  margin-bottom: 15px;
   background-color: #00A79D;
   border: none;
   border-radius: 0px;
   color: #FFFFFF;
+  margin-bottom: 15px;
   padding: 7px;
-  padding-bottom: 21px;
+  padding-bottom: 12px;
 }
 
 .completed-button {
@@ -196,7 +194,6 @@ p {
 
 .complete .button {
   background-color: #93959847;
-/*  text-decoration: line-through;*/
 }
 
 .remove:hover {
@@ -258,8 +255,8 @@ p {
   }
 
   p {
-    margin-top: -2%;
     font-size: 15px;
+    margin-top: -2%;
   }
 
   .button {
@@ -277,14 +274,12 @@ p {
     display: inline-block;
     width: 16px;
   }
-
 }
 
   @media screen and (max-width: 360px) {
 
   header {
     height: 33vh;
-/*    margin: -5% auto;*/
   }
 
   h1 {
@@ -338,6 +333,4 @@ p {
   .show-more {
     margin-top: 15px;
   }
-
 }
-

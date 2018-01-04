@@ -21,7 +21,7 @@ $('#idea-list').on('click', '.completed-button', taskComplete);
 $('.show-completed').on('click', showComplete);
 
 $(document).ready(pageLoad);
-$('.save-button').prop('disabled', true)
+$('.save-button').prop('disabled', true);
 
 var countCount = 0;
 
@@ -31,9 +31,9 @@ function pageLoad() {
       countCount++;
       if (countCount < 11) {
         prependIdea(JSON.parse(Object.values(localStorage)[i]));
-      }
-    }
-  }
+      };
+    };
+  };
 };
 
 function makeIdea(event) {
@@ -117,8 +117,8 @@ function showComplete() {
   for (var i = 0; i < inStorage; i++) {
     if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'complete') {
       prependIdea(JSON.parse(Object.values(localStorage)[i]));
-    }
-  }
+    };
+  };
   $('.show-completed').prop('disabled', true)
 };
 
@@ -230,7 +230,7 @@ function search() {
   $('article').each(function () {
     var searchResult = $(this).text().indexOf(searchRequest);
     this.style.display = searchResult > -1 ? "" : "none";
-  })
+  });
 };
 
 function filterImportance(level) {
@@ -241,7 +241,7 @@ function filterImportance(level) {
       prependIdea(JSON.parse(value));
     };
   });
-}
+};
 
 function filterCritical() {
   filterImportance(4)
@@ -268,7 +268,7 @@ function showMore() {
     if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'notComplete') {
       countCount++;
       if (countCount > 22) {
-        prependIdea(JSON.parse(Object.values(localStorage)[i]));
+        appendIdea(JSON.parse(Object.values(localStorage)[i]));
       };
     };
   };
