@@ -1,7 +1,7 @@
 $('.save-button').on('click', makeIdea);
 $('.idea-title').on('keyup', buttonDisable)
 $('.idea-description').on('keyup', buttonDisable)
-$('.search-field').on('keyup', search);
+$('.search').on('keyup', search);
 $('.show-more').on('click', showMore);
 $('#critical').on('click', filterCritical);
 $('#high').on('click', filterHigh);
@@ -221,7 +221,7 @@ function decreaseImportance(parse, article) {
 };
 
 function search() {
-  var searchRequest = $('.search-field').val();
+  var searchRequest = $('.search').val();
   $('article').each(function () {
     var searchResult = $(this).text().indexOf(searchRequest);
     this.style.display = searchResult > -1 ? "" : "none";
