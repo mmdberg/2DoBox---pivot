@@ -63,12 +63,16 @@ function prependIdea(idea) {
       <h2 contenteditable="true">${idea.title}</h2>
       <button class="remove button"></button>
       <p class="idea-body" contenteditable="true">${idea.body}</p>
+      <div class="quality-box"></div>
       <button class="vote-up arrow button" id="quality-up"></button>
       <button class="vote-down arrow button" id="quality-down"></button>
       <p class="vote-label">quality: <span id="quality">${idea.quality}</span></p>
+      </div>
+      <div>
       <button class="vote-up arrow button" id="importance-up"></button>
       <button class="vote-down arrow button" id="importance-down"></button>
       <p class="vote-label">importance: <span id="importance">${idea.importance}</span></p>
+      </div>
       <button class="completed-button">Task Completed</button>
     </article>`
   );
