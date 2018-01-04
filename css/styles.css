@@ -67,6 +67,10 @@ h1 {
   color: #FFFFFF;
 }
 
+.show-completed:disabled {
+  background-color: #D1D3D4;
+}
+
 .search-field {
   left: 25%;
   position: fixed;
@@ -117,9 +121,6 @@ h1 {
   width: 100vw;
 }
 
-#idea-list {
-
-}
 
 article {
   border-bottom: 1px solid #D1D3D4;
@@ -163,8 +164,13 @@ p {
 }
 
 .show-more {
-  float: right;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
+  background-color: #00A79D;
+  border: none;
+  border-radius: 0px;
+  color: #FFFFFF;
+  padding: 7px;
+  padding-bottom: 21px;
 }
 
 .completed-button {
@@ -318,6 +324,10 @@ p {
     font-size: 10px;
     vertical-align: middle;
     margin-top: 4px;
+  }
+
+  .show-more {
+    margin-top: 15px;
   }
 
 }

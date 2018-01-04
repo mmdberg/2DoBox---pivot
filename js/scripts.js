@@ -119,13 +119,9 @@ function showComplete () {
 for (var i = 0; i < inStorage; i++) {
 if ((JSON.parse(Object.values(localStorage)[i]).completed) === 'complete') {
  prependIdea(JSON.parse(Object.values(localStorage)[i]));
-};
-};
-//   var article = $(this).closest('article');
-//   article.fadeOut(function () {
-//     $(this).remove();
-//   })
-
+}
+}
+$('.show-completed').prop('disabled', true)
 };
 
 
